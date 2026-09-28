@@ -1,0 +1,25 @@
+.section {
+  padding-block: var(--section-y);
+}
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  column-gap: clamp(48px, 7vw, 120px);
+  align-items: start;
+}
+.h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 2.8vw, 40px);
+  letter-spacing: -0.035em;
+}
+.body {
+  margin: 20px 0 40px;
+  color: var(--muted);
+}
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr;
+    row-gap: 56px;
+  }
+}

@@ -1,0 +1,85 @@
+.footer {
+  background: var(--green-900);
+  color: var(--on-dark-2);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 6fr) minmax(0, 3fr);
+  gap: 40px;
+  padding-block: 72px 56px;
+}
+.logo {
+  display: block;
+  height: 52px;
+  width: auto;
+  color: var(--on-dark);
+}
+.info {
+  margin: 0;
+  display: grid;
+  gap: 6px;
+}
+.info div {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+}
+.info dt {
+  color: rgba(255, 255, 255, 0.46);
+}
+.info dd {
+  margin: 0;
+  color: var(--on-dark);
+}
+.info a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.nav {
+  justify-self: end;
+}
+.nav ul {
+  display: grid;
+  gap: 4px;
+  text-align: right;
+}
+.nav a {
+  color: var(--on-dark-2);
+  transition: color 0.3s var(--ease);
+}
+.nav a:hover {
+  color: #fff;
+}
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 20px 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 12px;
+}
+@media (max-width: 960px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-block: 56px 40px;
+  }
+  .logo {
+    height: 44px;
+  }
+  .nav {
+    justify-self: start;
+  }
+  .nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    text-align: left;
+  }
+  .bottom {
+    flex-direction: column;
+    gap: 2px;
+  }
+}

@@ -1,0 +1,48 @@
+.list {
+  margin: 0;
+  border-top: 1px solid var(--ink);
+}
+.row {
+  display: grid;
+  grid-template-columns: 96px 1fr auto;
+  align-items: baseline;
+  gap: 8px 24px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+.label {
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.valueCol,
+.actionCol {
+  margin: 0;
+}
+.value {
+  display: block;
+  font-family: var(--serif);
+  font-size: clamp(20px, 1.9vw, 26px);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.note {
+  display: block;
+  margin-top: 6px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.actionCol :global(.text-link) {
+  font-size: 13.5px;
+}
+@media (max-width: 640px) {
+  .row {
+    grid-template-columns: 1fr auto;
+  }
+  .label {
+    grid-column: 1 / -1;
+  }
+  .value {
+    font-size: 21px;
+  }
+}

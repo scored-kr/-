@@ -1,0 +1,98 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--green-900);
+  color: var(--on-dark);
+  padding-block: var(--section-y);
+}
+.bg {
+  z-index: -1;
+  object-fit: cover;
+  object-position: 80% 50%;
+  opacity: 0.5;
+  transform: scaleX(-1);
+}
+
+.top {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  column-gap: clamp(48px, 7vw, 120px);
+  align-items: end;
+}
+.eyebrow {
+  color: var(--on-dark-2);
+}
+.heading {
+  display: flex;
+  flex-direction: column;
+  margin-top: 26px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--fs-h2);
+  line-height: 1.42;
+  letter-spacing: -0.035em;
+}
+.body {
+  max-width: 26em;
+  color: var(--on-dark-2);
+  line-height: 1.9;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 36px;
+}
+.actions :global(.line-btn) {
+  flex: 1 1 200px;
+}
+
+.reviews {
+  margin-top: clamp(80px, 9vw, 128px);
+  padding-top: 32px;
+  border-top: 1px solid var(--on-dark-line);
+}
+.reviewsHead {
+  margin-bottom: 28px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 17px;
+  color: var(--on-dark);
+}
+.review {
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #b2c7d9; /* 메신저 배경색과 맞춰 비율이 달라도 정돈되게 */
+}
+.reviewImg {
+  width: 100%;
+  height: auto;
+  filter: saturate(0.82);
+}
+
+@media (max-width: 640px) {
+  .reviews .reviewCarousel {
+    --slide: 88%;
+  }
+}
+@media (max-width: 960px) {
+  .top {
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+  }
+  .heading {
+    font-size: clamp(27px, 7.4vw, 36px);
+  }
+  .actions {
+    flex-direction: column;
+    margin-top: 32px;
+  }
+  .actions :global(.line-btn) {
+    flex: none;
+    width: 100%;
+  }
+  .reviews {
+    margin-top: 72px;
+  }
+}

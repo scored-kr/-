@@ -1,0 +1,48 @@
+.doc {
+  margin: 0;
+}
+.frame {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid #e4e7e4;
+}
+.frame[data-surface='paper'] {
+  background: var(--paper-2);
+  border-color: transparent;
+}
+.img {
+  transition: transform 0.8s var(--ease);
+}
+.frame[data-fit='contain'] .img {
+  object-fit: contain;
+  padding: clamp(14px, 1.6vw, 22px);
+}
+.frame[data-fit='cover'] .img {
+  object-fit: cover;
+}
+.doc:hover .img {
+  transform: scale(1.015);
+}
+.caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.title {
+  font-family: var(--serif);
+  font-size: 15.5px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+}
+.meta {
+  flex: none;
+  font-size: 12.5px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,112 @@
+.root {
+  --slide: calc((100% - var(--gap) * (var(--per, 3) - 1)) / var(--per, 3));
+  --gap: clamp(20px, 2.6vw, 40px);
+  --ctrl: var(--ink);
+  --ctrl-line: var(--line);
+}
+.root[data-tone='dark'] {
+  --ctrl: #fff;
+  --ctrl-line: var(--on-dark-line);
+}
+
+.track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--slide);
+  column-gap: var(--gap);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.track::-webkit-scrollbar {
+  display: none;
+}
+.track[data-dragging] {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+.track[data-dragging] img {
+  pointer-events: none;
+}
+.track:focus-visible {
+  outline-offset: 8px;
+}
+.slide {
+  scroll-snap-align: start;
+  min-width: 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-top: clamp(36px, 4vw, 52px);
+}
+.bar {
+  position: relative;
+  flex: 1;
+  height: 1px;
+  background: var(--ctrl-line);
+}
+.bar span {
+  position: absolute;
+  top: -0.5px;
+  height: 2px;
+  background: var(--ctrl);
+  transition: left 0.25s linear;
+}
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+.buttons button {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 1px solid var(--ctrl-line);
+  background: none;
+  color: var(--ctrl);
+  cursor: pointer;
+  transition: border-color 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+.buttons button:hover:not(:disabled) {
+  border-color: var(--ctrl);
+}
+.buttons button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.buttons svg {
+  width: 20px;
+  height: 10px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+}
+
+@media (max-width: 960px) {
+  .root {
+    --slide: 62%;
+  }
+  /* 모바일: 트랙을 화면 끝까지 흘려 다음 카드가 엿보이게 */
+  .track {
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    scroll-padding-inline: var(--gutter);
+  }
+}
+@media (max-width: 640px) {
+  .root {
+    --slide: 80%;
+    --gap: 16px;
+  }
+  .buttons button {
+    width: 44px;
+    height: 44px;
+  }
+}

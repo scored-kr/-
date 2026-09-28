@@ -1,0 +1,39 @@
+.more {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 12px;
+  padding: 18px 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: none;
+  font-size: 14px;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+.more:hover {
+  color: var(--green-500);
+}
+.icon {
+  position: relative;
+  width: 14px;
+  height: 14px;
+}
+.icon::before,
+.icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: currentColor;
+  transition: transform 0.45s var(--ease);
+}
+.icon::after {
+  transform: rotate(90deg);
+}
+.more[aria-expanded='true'] .icon::after {
+  transform: rotate(0deg);
+}

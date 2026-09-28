@@ -1,0 +1,35 @@
+.cta {
+  background: var(--green-700);
+  color: var(--on-dark);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 48px;
+  padding-block: clamp(88px, 9vw, 136px);
+}
+.title {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(26px, 2.8vw, 40px);
+  line-height: 1.45;
+  letter-spacing: -0.035em;
+}
+.actions {
+  display: flex;
+  gap: 12px;
+  flex: none;
+}
+@media (max-width: 960px) {
+  .inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .actions {
+    flex-direction: column;
+  }
+}

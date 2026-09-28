@@ -1,0 +1,163 @@
+.hero {
+  position: relative;
+  min-height: max(640px, 100svh);
+  max-height: 1100px;
+  display: flex;
+  background: var(--green-900);
+  color: var(--on-dark);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.backdrop {
+  position: absolute;
+  inset: -40px 0 -80px;
+  z-index: -2;
+  will-change: transform;
+}
+.bgImg {
+  object-fit: cover;
+  object-position: 50% 40%;
+  animation: drift 42s var(--ease) infinite alternate;
+  transform-origin: 70% 20%;
+}
+@keyframes drift {
+  from {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.1) translate3d(-1.2%, 0.8%, 0);
+  }
+}
+
+.veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(22, 32, 29, 0.34) 0%, rgba(22, 32, 29, 0) 22%),
+    linear-gradient(0deg, rgba(22, 32, 29, 0.4) 0%, rgba(22, 32, 29, 0) 30%);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 40px;
+  padding-top: var(--header-h);
+  padding-bottom: calc(var(--header-h) * 0.6);
+}
+
+/* ---- center mark ---- */
+.mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: markIn 1.8s var(--ease) 0.1s both;
+}
+@keyframes markIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+.logo {
+  height: clamp(150px, 15.5vw, 236px);
+  aspect-ratio: 1.745;
+  color: #fff;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+.logo svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.dash {
+  display: block;
+  width: 44px;
+  height: 1px;
+  margin: clamp(34px, 4vw, 52px) 0 clamp(28px, 3vw, 36px);
+  background: currentColor;
+  opacity: 0.7;
+}
+.dash,
+.sub {
+  opacity: calc(1 - var(--dock, 0) * 1.8);
+}
+.sub {
+  font-family: var(--serif);
+  font-size: clamp(16px, 1.4vw, 20px);
+  letter-spacing: 0.02em;
+}
+
+/* ---- side copy ---- */
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 220px;
+  font-family: var(--serif);
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.85;
+  color: var(--on-dark);
+  padding-block: 4px;
+  margin-bottom: clamp(76px, 8vw, 120px); /* 로고 중심에 맞춘 광학적 정렬 */
+  opacity: calc(1 - var(--dock, 0) * 1.8);
+  animation: sideIn 1.6s var(--ease) 0.9s both;
+}
+@keyframes sideIn {
+  from {
+    opacity: 0;
+  }
+}
+.left {
+  justify-self: start;
+  border-left: 1px solid var(--on-dark-line);
+  padding-left: 20px;
+}
+.right {
+  justify-self: end;
+  text-align: right;
+  border-right: 1px solid var(--on-dark-line);
+  padding-right: 20px;
+}
+
+@media (max-width: 960px) {
+  .hero {
+    min-height: max(600px, 100svh);
+  }
+  .inner {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto;
+    gap: 0 16px;
+    padding-bottom: 36px;
+  }
+  .mark {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    align-self: center;
+    padding-top: 24px;
+  }
+  .logo {
+    height: clamp(120px, 34vw, 170px);
+  }
+  .dash {
+    margin: 30px 0 24px;
+  }
+  .side {
+    grid-row: 2;
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.75;
+  }
+  .left {
+    padding-left: 14px;
+  }
+  .right {
+    padding-right: 14px;
+  }
+  .bgImg {
+    object-position: 30% 40%;
+  }
+}

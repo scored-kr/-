@@ -1,0 +1,90 @@
+.section {
+  padding-block: 0 var(--section-y);
+}
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 11fr) minmax(0, 13fr);
+  column-gap: clamp(48px, 8vw, 128px);
+  align-items: center;
+  border-top: 1px solid var(--line-soft);
+  padding-top: var(--section-y);
+}
+
+.photo {
+  position: relative;
+  aspect-ratio: 3 / 4; /* 원본 프로필 비율 그대로 — 크롭 없음 */
+  max-width: 520px;
+  overflow: hidden;
+  background: #80868f;
+}
+.photoInner {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+  transform: scale(1.06);
+}
+.photoImg {
+  object-fit: cover;
+  object-position: 50% 20%;
+}
+
+.copy {
+  max-width: 520px;
+}
+.name {
+  margin-top: 26px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(36px, 3.6vw, 52px);
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+.rule {
+  margin: 34px 0;
+  color: var(--ink);
+}
+.focus {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--serif);
+  font-size: clamp(19px, 1.7vw, 24px);
+  line-height: 1.65;
+  letter-spacing: -0.03em;
+  color: var(--green-800);
+}
+.body {
+  margin: 26px 0 48px;
+  max-width: 30em;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr;
+    row-gap: 48px;
+  }
+  .photo {
+    max-width: none;
+    aspect-ratio: 3 / 3.6;
+    margin-inline: calc(var(--gutter) * -1 + 0px);
+  }
+  .name {
+    margin-top: 20px;
+    font-size: 34px;
+  }
+  .rule {
+    margin: 26px 0;
+  }
+  .focus {
+    font-size: 19px;
+  }
+  .body {
+    margin: 20px 0 36px;
+  }
+}
+@media (max-width: 640px) {
+  .photo {
+    margin-inline: calc(var(--gutter) * -1);
+  }
+}

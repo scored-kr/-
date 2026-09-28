@@ -1,0 +1,241 @@
+/* ---- intro ---- */
+.intro {
+  padding-top: calc(var(--header-h) + clamp(48px, 6vw, 96px));
+  padding-bottom: var(--section-y);
+}
+.introGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 11fr) minmax(0, 12fr);
+  column-gap: clamp(48px, 8vw, 128px);
+  align-items: end;
+}
+.photo {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #80868f;
+}
+.photoImg {
+  object-fit: cover;
+  object-position: 50% 18%;
+}
+.copy {
+  max-width: 540px;
+  padding-bottom: 8px;
+}
+.name {
+  margin-top: 26px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(42px, 4.6vw, 68px);
+  line-height: 1.15;
+  letter-spacing: -0.045em;
+}
+.rule {
+  margin: 36px 0;
+  color: var(--ink);
+}
+.focus {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--serif);
+  font-size: clamp(20px, 1.8vw, 25px);
+  line-height: 1.6;
+  letter-spacing: -0.03em;
+  color: var(--green-800);
+}
+.body {
+  margin-top: 24px;
+  color: var(--muted);
+  line-height: 1.9;
+}
+.pull {
+  position: relative;
+  margin-top: clamp(56px, 6vw, 88px);
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+}
+.pullMark {
+  position: absolute;
+  top: 10px;
+  left: -4px;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 120px;
+  line-height: 1;
+  color: var(--green-700);
+  opacity: 0.12;
+  pointer-events: none;
+}
+.pull blockquote {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-left: 28px;
+  font-family: var(--serif);
+  font-size: clamp(18px, 1.5vw, 21px);
+  line-height: 1.75;
+  color: var(--ink-2);
+}
+
+/* ---- index ---- */
+.index {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 5;
+  background: rgba(255, 255, 255, 0.97);
+  border-block: 1px solid var(--line-soft);
+}
+.index ul {
+  display: flex;
+  gap: clamp(24px, 3vw, 48px);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.index a {
+  display: block;
+  padding: 18px 0;
+  font-size: 14px;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: color 0.3s var(--ease);
+}
+.index a:hover {
+  color: var(--ink);
+}
+
+/* ---- chapters ---- */
+.chapter {
+  scroll-margin-top: calc(var(--header-h) + 58px);
+}
+.chapterGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
+  column-gap: clamp(40px, 6vw, 104px);
+  padding-block: clamp(72px, 8vw, 120px);
+}
+.chapter + .chapter .chapterGrid {
+  border-top: 1px solid var(--line);
+}
+.chapterLabel {
+  position: sticky;
+  top: calc(var(--header-h) + 90px);
+  align-self: start;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(26px, 2.4vw, 34px);
+  line-height: 1.3;
+  letter-spacing: -0.035em;
+}
+.chapterBody {
+  min-width: 0;
+  border-top: 1px solid var(--ink);
+  padding-top: 8px;
+}
+.lead {
+  padding: 20px 0 8px;
+  font-family: var(--serif);
+  font-size: clamp(19px, 1.6vw, 22px);
+  letter-spacing: -0.025em;
+  color: var(--green-800);
+}
+.subgroup + .subgroup {
+  margin-top: 28px;
+}
+.subLabel {
+  padding: 20px 0 4px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--green-500);
+}
+.photos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 28px);
+  margin-top: 40px;
+}
+.photoItem {
+  margin: 0;
+}
+.photoFrame {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #ddd;
+}
+.photoCover {
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+.photoItem:hover .photoCover {
+  transform: scale(1.02);
+}
+.photoItem figcaption {
+  margin-top: 12px;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.researchMedia {
+  margin-top: 56px;
+}
+
+/* ---- document bands ---- */
+.band {
+  padding-block: clamp(64px, 7vw, 104px);
+  background: var(--paper-2);
+  overflow: hidden;
+}
+.bandHead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: clamp(32px, 3.4vw, 48px);
+}
+.bandTitle {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(22px, 2vw, 28px);
+  letter-spacing: -0.03em;
+}
+.bandNote {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+@media (max-width: 960px) {
+  .introGrid {
+    grid-template-columns: 1fr;
+    row-gap: 48px;
+  }
+  .photo {
+    margin-inline: calc(var(--gutter) * -1);
+    aspect-ratio: 3 / 3.6;
+  }
+  .intro {
+    padding-top: var(--header-h);
+  }
+  .name {
+    font-size: 40px;
+  }
+  .chapterGrid {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+  .chapterLabel {
+    position: static;
+  }
+  .bandHead {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+@media (max-width: 640px) {
+  .photos {
+    grid-template-columns: 1fr;
+  }
+}

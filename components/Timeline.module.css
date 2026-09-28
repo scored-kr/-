@@ -1,0 +1,107 @@
+.list {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  --period: 0px;
+}
+.list[data-period] {
+  --period: 168px;
+}
+/* 세로 레일: 노드(7px) 중심 */
+.list::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--period) + 20px + 3px);
+  top: 26px;
+  bottom: 26px;
+  width: 1px;
+  background: var(--line);
+}
+.list:not([data-period])::before {
+  left: 3px;
+}
+.item {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--period) 7px 1fr;
+  column-gap: 20px;
+  padding: 16px 0;
+}
+.list:not([data-period]) .item {
+  grid-template-columns: 7px 1fr;
+}
+.period {
+  padding-top: 3px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--green-500);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.dot {
+  position: relative;
+  top: 10px;
+  width: 7px;
+  height: 7px;
+  background: var(--green-500);
+}
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.org {
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.title {
+  font-family: var(--serif);
+  font-size: clamp(17px, 1.35vw, 19px);
+  line-height: 1.6;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.note {
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .list[data-period] {
+    --period: 0px;
+  }
+  .list::before,
+  .list[data-period]::before {
+    left: 3px;
+  }
+  .item {
+    grid-template-columns: 7px 1fr;
+    column-gap: 16px;
+    padding: 14px 0;
+  }
+  /* 모바일: 기간을 본문 위로 */
+  .period {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 0;
+    font-size: 12.5px;
+  }
+  .dot {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    top: 6px;
+  }
+  .body {
+    grid-column: 2;
+  }
+  .title {
+    font-size: 16.5px;
+  }
+  .note {
+    font-size: 13.5px;
+  }
+}
